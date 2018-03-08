@@ -27,6 +27,7 @@ RUN buildDeps="git build-essential libpq-dev uuid-dev libcurl4-openssl-dev libwe
     sed -i "s/MOSQUITTO_SRC =/MOSQUITTO_SRC = ..\//" config.mk && \
     make && \
     cp auth-plug.so /usr/local/lib/ && \
+    cp np /usr/local/bin/ && \
     apt remove -y --purge $buildDeps && apt autoremove -y && rm -rf /var/cache/apt/* && rm -rf /tmp/*
 
 ADD etc/mosquitto/mosquitto.conf /etc/mosquitto/mosquitto.conf
