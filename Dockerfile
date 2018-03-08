@@ -30,4 +30,9 @@ RUN buildDeps="git build-essential libpq-dev uuid-dev libcurl4-openssl-dev libwe
 
 ADD etc/mosquitto/mosquitto.conf /etc/mosquitto/mosquitto.conf
 
+RUN mkdir -p /etc/mosquitto/mosquitto-auth-plug/ && \
+    touch /etc/mosquitto/mosquitto-auth-plug/passwords && \
+    touch /etc/mosquitto/mosquitto-auth-plug/acls && \
+    chown -R mosquitto /etc/mosquitto/mosquitto-auth-plug
+
 CMD ["mosquitto", "-c", "/etc/mosquitto/mosquitto.conf"]
